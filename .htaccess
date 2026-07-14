@@ -1,0 +1,21 @@
+# DayTracker — Apache Configuration for cPanel
+Options -Indexes
+DirectoryIndex app.html index.php
+
+# Deny access to config file
+<Files "config.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# CORS headers for API
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# PHP settings
+<IfModule mod_php.c>
+    php_value display_errors 0
+    php_value log_errors 1
+</IfModule>
